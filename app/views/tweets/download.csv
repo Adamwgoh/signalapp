@@ -1,0 +1,5 @@
+<%= headers = ['Username', 'Created_at', 'Content'] -%>
+<%= CSV.generate_line headers -%>
+<%= Tweets.find params[:tweets].each do |t| -%>
+<%= CSV.generate_line([t.username, t.created_at, t.text]) -%>
+<% end -%>

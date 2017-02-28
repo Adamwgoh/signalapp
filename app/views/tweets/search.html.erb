@@ -1,0 +1,34 @@
+
+<p id="notice"><%= notice %></p>
+
+<h1>Tweets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <%= button_to 'Download as CSV', tweets_download_path(format: :csv),  method: :get, params: {search: params[:search]}%>
+    </tr>
+
+    <tr>
+      <th>Username</th>
+      <th>Created At</th>
+      <th>Content</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% keyword = params[:search] %>
+    <% @tweets = $client.search(keyword, result_type:'recent').take(50).collect() %>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.user.screen_name %></td>
+        <td><%= tweet.created_at  %></td>
+        <td><%= tweet.text %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

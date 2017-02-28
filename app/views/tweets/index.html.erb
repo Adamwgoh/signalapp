@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tweets</h1>
+
+<table>
+  <thead>
+    <tr>
+    </tr>
+
+    <tr>
+      <th>Username</th>
+      <th>Created At</th>
+      <th>Content</th>
+      <th colspan="4"></th>
+    </tr>
+    <tr>
+        <%= form_tag(tweets_search_path, :method => "get", id: "search-form" ) do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search tweets" %>
+        <%= submit_tag "Search" %>
+        <% end %>
+    </tr>
+    <tr>
+        <%= form_tag(users_search_path, :method => "get", id: "search-user-form" ) do %>
+        <%= text_field_tag :search, params[:keyword], placeholder: "Search User" %>
+        <%= submit_tag "Search" %>
+        <% end %>
+    </tr>
+
+  </thead>
+
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= tweet.user.screen_name %></td>
+        <td><%= tweet.created_at  %></td>
+        <td><%= tweet.text %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
