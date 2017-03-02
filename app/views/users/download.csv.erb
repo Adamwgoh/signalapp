@@ -1,0 +1,6 @@
+<%= @followers = $client.followers(params[:users].to_i) %>
+<%= headers = ['Id', 'Username','Description', 'Followers Count', 'Location', 'Is Protected', 'Tweets Posted', 'Most Recent Status', 'Most Recent Status in Reply to', 'Created_at','Time Zone','verified'] %>
+<%= CSV.generate_line headers %>
+<%= @followers.each do |t| %>
+<%= CSV.generate_line([t.id, t.user_name,t.description, t.followers_count, t.friends_count,t.location, t.protected, t.statuses_count, t.status.text, t.status.in_reply_to_screen_name, t.created_at, t.time_zone,t.verified]) -%>
+<% end -%>

@@ -1,7 +1,7 @@
 <%= keyword = params[:search] %>
 <%= @tweets = $client.search(keyword, result_type:'recent').take(200).collect() %>
-<%= headers = ['Username', 'Created_at', 'Content'] %>
+<%= headers = ['Id', 'Username', 'Created_at','Time Zone','verified', 'Content'] %>
 <%= CSV.generate_line headers %>
 <%= @tweets.each do |t| %>
-<%= CSV.generate_line([t.user['name'], t.created_at, t.text]) -%>
+<%= CSV.generate_line([t.id, t.user['name'], t.created_at, t.time_zone,t.verified, t.text]) -%>
 <% end -%>

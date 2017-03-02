@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @user.screen_name%></h1>
+<h1><img src=<%= @user.profile_image_uri.to_s %> /></h1>
+<h2>
+      <%= button_to 'Download as CSV', users_download_path(format: :csv),  method: :get, params: {users: params[:id]}%>
+</h2>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Followed</th>
+      <th> Followers</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @user.screen_name %></td>
+        <td><%= @user.followers_count %></td>
+        <%= @followers.each do |follower| %>
+          <tr>
+            <td><%= follower.screen_name %></td>
+            <td><%= follower.status.text %></td>
+          </tr>
+        <% end %>
+      </tr>
+  </tbody>
+</table>
+
+

@@ -1,11 +1,13 @@
-
-
 <p id="notice"><%= notice %></p>
 
-<h1>Searched Users</h1>
+<h1>User</h1>
+<h1><img src=<%= user.profile_image_uri.to_s %> /></h1>
 
 <table>
   <thead>
+    <tr>
+      <%= button_to 'Download as CSV', tweets_download_path(format: :csv),  method: :get, params: {search: params[:search]}%>
+    </tr>
     <tr>
       <th>User</th>
       <th>Description</th>
@@ -16,7 +18,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.screen_name, users_path(user.id)%></td>
+        <td><%= link_to user.screen_name, user_path(user.id)%></td>
         <td><%= user.description %></td>
       </tr>
     <% end %>
