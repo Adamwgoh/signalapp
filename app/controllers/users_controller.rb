@@ -37,9 +37,14 @@ end
 def show
   id = params[:users]
   id ||= params[:id]
-
   @user = $client.user(id.to_i)
+  
+  @ids = @followers.ids
+  # Check for nof followers if its more than rate limit of 15*5000
   @followers = $client.followers(id.to_i)
-end
-
+  if @user.followers_count > 5000
+    # Construct for next cursor
+    cursorid = @followers.cursor
+    next = $client.user(id.to_id)
+  end 
 end

@@ -3,5 +3,5 @@
 <%= headers = ['Id', 'Username', 'Created_at','Time Zone','verified', 'Content'] %>
 <%= CSV.generate_line headers %>
 <%= @tweets.each do |t| %>
-<%= CSV.generate_line([t.id, t.user['name'], t.created_at, t.time_zone,t.verified, t.text]) -%>
+<%= CSV.generate_line([t.id, t.user['name'], t.created_at, t.time_zone,t.verified, t.text]).html_safe -%>
 <% end -%>

@@ -1,0 +1,28 @@
+{
+  "name": "signal_app",
+  "version": "1.0.0",
+  "description": "signal front-endframework",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "~/Desktop/signal_app/signalapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "browserify-incremental": "^3.1.1",
+    "es6-promise": "^4.0.5",
+    "events": "^1.1.1",
+    "flux": "^3.1.2",
+    "object-assign": "^4.1.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "reactify": "^1.1.1"
+  }
+}

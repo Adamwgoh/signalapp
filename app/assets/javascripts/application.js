@@ -15,3 +15,9 @@
 //= require turbolinks
 // require bootstrap-sprockets
 //= require_tree .
+
+ReactJS = require('react')
+
+//Example on rendering a Reach client app
+//TodoApp = REACTJS.createFactory(require('flux/components/ToDoApp.react'));
+
