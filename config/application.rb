@@ -16,6 +16,8 @@ module SignalApp
     # React configs here
     config.browserify_rails.commandline_options = '-t reactify --extension=\”.react.js\”'
     config.browserify_rails.source_map_environments << 'development'
-   
+    config.to_prepare do
+		  DeviseController.respond_to :html, :json
+		end  
   end
 end

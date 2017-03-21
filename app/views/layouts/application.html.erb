@@ -3,12 +3,29 @@
   <head>
     <title>SignalApp</title>
     <%= csrf_meta_tags %>
-    <%= render 'tweets/tweets' %>
+    <%= yield :header_scripts %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag :defaults %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
   </head>
 
   <body>
-    <%= yield %>
+    <p>Welcome to home page</p>
+		<div id="user-info">
+		  <% if user_signed_in? %>
+			  <%= current_user.email %>
+				<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+			<% else %>
+			  <li><%= link_to "Sign in", new_user_session_path %></li> 
+				<li><%= link_to "Sign up", new_user_registration_path %></li>
+			  <li><%=  link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path %></li>
+			<% end  %>
+		</div>
+		<%= yield %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield :footer_scripts %>
   </body>
 </html>
