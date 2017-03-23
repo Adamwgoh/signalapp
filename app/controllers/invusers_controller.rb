@@ -45,6 +45,8 @@ def show
   if @user.followers_count > 5000
     # Construct for next cursor
     cursorid = @followers.cursor
-    next = $client.user(id.to_id)
+    nextuser = $client.user(id.to_id)
   end 
+end
+
 end
